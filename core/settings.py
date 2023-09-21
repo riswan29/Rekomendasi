@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)7hn&63h5r7^+c$+#fv)gn0fu(!by=cf%s12fr-keozw@u0)vs'
+SECRET_KEY = 'django-insecure-bo$&$r!xmo!piy#q2-p&s42r-b$fagq2tc2_kjy=oi+&^8s)nf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -19,17 +19,17 @@ ALLOWED_HOSTS = []
 
 # buat permission custom user di root
 AUTH_USER_MODEL = 'app.CustomUser'
-
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_argon.apps.AdminArgonConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app', 
+    'app'
 ]
 
 MIDDLEWARE = [
@@ -47,7 +47,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Jakarta'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
