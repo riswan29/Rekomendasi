@@ -10,7 +10,7 @@ def register(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password']) 
             form.save()
-            return redirect('login')  # Redirect to a success page
+            return redirect('login')
     else:
         form = RegistrationForm()
     return render(request, 'registrasi/registrasi.html', {'form': form})
@@ -52,7 +52,7 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('list')  # Ganti dengan nama URL untuk daftar produk
+            return redirect('list')
     else:
         form = ProductForm()
     return render(request, 'produk/tambah_produk.html', {'form': form})
