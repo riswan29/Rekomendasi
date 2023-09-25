@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Produk</title>
+</head>
+<body>
+    <h2>Daftar Produk</h2>
+    <ul>
+        {% for produk in produk_list %}
+            <li>
+                <strong>Nama Produk:</strong> {{ produk.nama_barang }}<br>
+                <strong>Rating:</strong> {{ produk.rating }}<br>
+                <strong>Kategori:</strong> {{ produk.kategori }}<br>
+                <strong>Deskripsi:</strong> {{ produk.deskripsi }}<br>
+                <strong>Image 1:</strong><br>
+                <img src="{{ produk.gambar1.url }}" alt="Image 1"><br>
+                <strong>Image 2:</strong><br>
+                <img src="{{ produk.gambar2.url }}" alt="Image 2"><br><br>
+            </li>
+        {% endfor %}    
+    </ul>
+</body>
+</html>
