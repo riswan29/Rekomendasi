@@ -1,0 +1,7 @@
+app/migrations
+core/migrations
+media/
+staticfiles/
+
+app/__pycache__
+core/__pycache__
