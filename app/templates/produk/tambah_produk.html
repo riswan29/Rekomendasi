@@ -1,14 +1,24 @@
+<!-- recommendations.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tambah Produk</title>
+    <title>Rekomendasi untuk User-idx {{ user_idx_to_display }}</title>
 </head>
 <body>
-    <h2>Tambah Produk</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Simpan</button>
-    </form>
+    <h2>Rekomendasi untuk User-idx {{ user_idx_to_display }}:</h2>
+    <ul>
+        {% for product in recommendations %}
+            <li>
+                <img src="{{ product.gambar1.url }}" alt="{{ product.nama_barang }}">
+                <h3>{{ product.nama_barang }}</h3>
+                <p>Tipe Motor: {{ product.tipe_motor }}</p>
+                <p>Jenis Ban: {{ product.jenis_ban }}</p>
+                <p>Rating: {{ product.rating }}</p>
+                <p>Ukuran: {{ product.ukuran }}</p>
+                <p>Harga: {{ product.harga }}</p>
+                <p>Deskripsi: {{ product.deskripsi }}</p>
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

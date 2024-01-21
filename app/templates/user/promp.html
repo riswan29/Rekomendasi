@@ -1,0 +1,199 @@
+{% load static %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+    <meta charset="utf-8">
+    <title>Rekomendasi</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Favicon -->
+    <link href="img/favicon.html" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f2f2f2;
+    }
+
+    h1 {
+        color: #D19C97;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .settings-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffff;
+        /* #fcf0f9; */
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="option"],
+    .form-group input[type="select"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 3px;
+        border: 1px solid #cccccc;
+        font-size: 100%;
+    }
+
+    .form-group button {
+        padding: 10px 20px;
+        background-color: #D19C97;
+        color: black;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+
+        <div class="row align-items-center py-2 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end">
+
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+        </div>
+
+        <!-- Topbar End -->
+
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+            <a href="#" class="text-decoration-none d-block d-lg-none">
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                        class="text-primary font-weight-bold border px-3 mr-1">Home</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="shop.html" class="nav-item nav-link">Shop</a>
+                    <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                </div>
+            </div>
+        </nav>
+        <div class="col-lg-25 pb-5">
+            <div class="settings-container">
+                <h1>Pilih Rekomendasi</h1>
+                <hr />
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="tipeMotorSelect">Tipe Motor</label>
+                        <select class="form-control" id="tipeMotorSelect" name="tipe_motor">
+                            <option disabled selected class="text-center">Pilih Tipe Motor</option>
+                            {% for choice in motor_choices %}
+                                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jenisBanSelect">Jenis Ban</label>
+                        <select class="form-control" id="jenisBanSelect" name="jenis_ban">
+                            <option disabled selected class="text-center">Pilih Jenis Ban</option>
+                            {% for choice in jenis_ban_choices %}
+                                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ukuranBanSelect">Ukuran Ban</label>
+                        <select class="form-control" id="ukuranBanSelect" name="ukuran">
+                            <option disabled selected class="text-center">Pilih Ukuran Ban</option>
+                            {% for choice in ukuran_choices %}
+                                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hargaSelect">Harga</label>
+                        <select class="form-control" id="hargaSelect" name="harga">
+                            <option disabled selected class="text-center">Pilih Harga</option>
+                            {% for choice in harga_choices %}
+                                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" style="font-size: larger;"><a href='{% url "shop" %}'>Get Rekomendasi</a></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+
+        <div class="row border-top mx-xl-5 py-4">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-dark">
+                    &copy; All Rights Reserved.
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                Designed by Herlin skripsi2023
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Script JavaScript Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+
+    <script src="js/dropdwon.js"></script>
+
+</body>
+
+</html>
+
+{% endblock content %}

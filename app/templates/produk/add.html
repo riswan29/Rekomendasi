@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unggah Produk dari Excel</title>
+</head>
+<body>
+    <h2>Unggah Produk dari Excel</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file_excel">Pilih File Excel:</label>
+        <input type="file" name="file_excel" accept=".xlsx, .xls">
+        <br>
+        <button type="submit">Unggah</button>
+    </form>
+</body>
+</html>

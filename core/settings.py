@@ -7,6 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 AUTH_USER_MODEL ='app.customUser'
 LOGOUT_REDIRECT_URL = 'logout'
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -21,7 +22,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+JET_SIDE_MENU_COMPACT = True
 INSTALLED_APPS = [
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

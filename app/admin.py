@@ -7,5 +7,18 @@ class tableUser(admin.ModelAdmin):
     fields = ['image']
 admin.site.register(customUser, tableUser)
 
-admin.site.register(Produk)
 
+class tableProduk(admin.ModelAdmin):
+    list_display = [ 'nama_barang', 'tipe_motor']
+    field = ['nama_barang']
+admin.site.register(Produk, tableProduk)
+
+class tableSCORE(admin.ModelAdmin):
+    list_display = ['waktu', 'skor', 'produk']
+    field = ['produk']
+admin.site.register(ScoreMAE, tableSCORE)
+
+class tableUserAct(admin.ModelAdmin):
+    list_display = ['user', 'last_login']
+    field = ['user']
+admin.site.register(UserActivity, tableUserAct)

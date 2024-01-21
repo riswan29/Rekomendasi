@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekomendasi Produk</title>
+</head>
+<body>
+
+    <h1>Rekomendasi Produk</h1>
+
+    {% if recommended_products %}
+        <ul>
+            {% for product in recommended_products %}
+                <li>
+                    <h3>{{ product.nama_barang }}</h3>
+                    <p>Tipe Motor: {{ product.tipe_motor }}</p>
+                    <p>Jenis Ban: {{ product.jenis_ban }}</p>
+                    <p>Rating: {{ product.rating }}</p>
+                    <p>Ukuran: {{ product.ukuran }}</p>
+                    <p>Harga: Rp. {{ product.harga }}</p>
+                    <p>{{ product.deskripsi }}</p>
+                    {% comment %} <img src="{{ product.gambar1.url }}" alt="{{ product.nama_barang }} Image"> {% endcomment %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Tidak ada produk yang direkomendasikan.</p>
+    {% endif %}
+
+</body>
+</html>
